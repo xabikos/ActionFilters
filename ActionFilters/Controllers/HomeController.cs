@@ -20,6 +20,7 @@ namespace ActionFilters.Controllers
             return View();
         }
 
+        [UserConfirmedFilter]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

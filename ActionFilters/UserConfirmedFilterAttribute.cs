@@ -13,12 +13,24 @@ namespace ActionFilters
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
     public class UserConfirmedFilterAttribute : ActionFilterAttribute
     {
-        public override async void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var userId = filterContext.HttpContext.User.Identity.GetUserId();
-            var userManager = filterContext.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            // User is not logged in so redirect him to log in controller action
+            if (string.IsNullOrEmpty(userId))
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(
+                            new
+                            {
+                                controller = "Account",
+                                action = "Login",
+                                returnUrl = filterContext.HttpContext.Request.RawUrl
+                            }));
+                return;
+            }
 
-            if (!await userManager.IsEmailConfirmedAsync(userId))
+            var userManager = filterContext.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            if (!userManager.IsEmailConfirmed(userId))
             {
                 filterContext.Result =
                     new RedirectToRouteResult(
