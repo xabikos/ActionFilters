@@ -5,7 +5,7 @@ using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace ActionFilters
+namespace ActionFilters.Infrastructure
 {
     /// <summary>
     /// Action filter attribute can be used in Controller class or methods to verify the current user has confirmed his email
