@@ -8,11 +8,12 @@ This project includes two action filter attributes that can be used to decorate 
 MVC controller action. It can be used on a class level as well.
 
 ```csharp
-[UserConfirmedFilter]
-public ActionResult Contact() {
-	ViewBag.Message = "Your contact page.";
-
-	return View();
+public class HomeController : Controller {
+	[UserConfirmedFilter]
+	public ActionResult Contact() {
+		ViewBag.Message = "Your contact page.";
+		return View();
+	}
 }
 ```
 
