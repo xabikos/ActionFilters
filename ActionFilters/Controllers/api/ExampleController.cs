@@ -5,10 +5,10 @@ using ActionFilters.Infrastructure;
 
 namespace ActionFilters.Controllers.api
 {
+    [UserConfirmedWebApiFilterAttribute]
     public class ExampleController : ApiController
     {
         // GET: api/Example
-        [UserConfirmedWebApiFilterAttribute]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
