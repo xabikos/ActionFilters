@@ -18,8 +18,8 @@ public ActionResult Contact() {
 
 Web Api controller class. It can be used on individual controller actions as well.
 
-```
-[UserConfirmedWebApiFilterAttribute]
+```csharp
+[UserConfirmedWebApiFilter]
 public class ExampleController : ApiController {
 	// GET: api/Example
 	public IEnumerable<string> Get() {

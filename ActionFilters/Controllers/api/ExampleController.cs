@@ -5,7 +5,7 @@ using ActionFilters.Infrastructure;
 
 namespace ActionFilters.Controllers.api
 {
-    [UserConfirmedWebApiFilterAttribute]
+    [UserConfirmedWebApiFilter]
     public class ExampleController : ApiController
     {
         // GET: api/Example
